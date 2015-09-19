@@ -11,6 +11,11 @@ import javafx.util.Duration;
 
 public class Main extends Application{
 	
+	private static final int X_LAYOUT_SIZE = 600;
+	private static final int Y_LAYOUT_SIZE = 300;
+	private static final int INIT_X_BALL_POS = 10;
+	private static final int INIT_Y_BALL_POS = 10;
+	
 	double ballRadius = 10;
 	Timeline timeline;
 	double ballSpeed = 0;
@@ -29,11 +34,11 @@ public class Main extends Application{
 		Circle ball = new Circle(ballRadius);
 		Pane pane = new Pane();
 		pane.getChildren().add(ball);
-		ball.setLayoutX(10);
-		ball.setLayoutY(10);
+		ball.setLayoutX(INIT_X_BALL_POS);
+		ball.setLayoutY(INIT_Y_BALL_POS);
 		Scene scene = new Scene(pane);
-		pane.setPrefHeight(300);
-		pane.setPrefWidth(600);
+		pane.setPrefHeight(Y_LAYOUT_SIZE);
+		pane.setPrefWidth(X_LAYOUT_SIZE);
 		stage.setScene(scene);
 		stage.show();
 	
@@ -62,7 +67,7 @@ public class Main extends Application{
 	
 	private boolean collide(Circle ball, Pane pane){
 		
-		return (ball.getLayoutY() + ballRadius + 10 > pane.getHeight());
+		return (ball.getLayoutY() + ballRadius + 10 > pane.getHeight()); //+10 is a buffer region, which somehow I need to add.
 		
 	}
 	
